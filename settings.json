@@ -1,0 +1,56 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.iconTheme": "vscode-icons",
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "cmake.configureOnOpen": true,
+    "cmake.options.advanced": {
+        
+        "build": {
+            "statusBarVisibility": "inherit",
+            "inheritDefault": "visible"
+        },
+        "launch": {
+            "statusBarVisibility": "inherit",
+            "inheritDefault": "visible"
+        },
+        "debug": {
+            "statusBarVisibility": "inherit",
+            "inheritDefault": "visible"
+        }
+    },
+    "git.autofetch": true,
+    "gitlens.ai.experimental.provider": "openai",
+    "gitlens.ai.experimental.openai.model": "gpt-3.5-turbo-1106",
+    "codeQL.telemetry.enableTelemetry": true,
+    "workbench.settings.applyToAllProfiles": [ 
+    ],
+    "vscode_custom_css.imports": [
+        "https://gist.githubusercontent.com/Crysta1221/24c724fd9f475ef473dcf2c3d551b8c3/raw/a9e6920e39d78eeb43ea448d36a8eb215bbbbf35/style.css"
+    ],
+    "background.fullscreen":{
+        "images": ["https://images.squarespace-cdn.com/content/v1/54fc8146e4b02a22841f4df7/1506037204035-MYCIXKV1HMC499OVIW8I/yourname-background26.jpeg?format=2500w"],
+        "opacity": 0.1
+    },
+    "github.copilot.editor.enableAutoCompletions": true,
+    "gitlens.ai.experimental.model": "openai:gpt-4o",
+    "workbench.startupEditor": "none",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "files.autoSave": "afterDelay",
+    "deepsource.installationUrl": "https://app.deepsource.com",
+    "deepsource.highlightAffectedLines": false,
+    "background.autoInstall": true,
+    "background.enabled": true,
+    "parallels-desktop.extension.path": "/Users/crystallized/.parallels-desktop-vscode",
+    "parallels-desktop.prlctl.path": "/usr/local/bin/prlctl",
+    "parallels-desktop.git.path": "/opt/homebrew/bin/git",
+    "parallels-desktop.brew.path": "/opt/homebrew/bin/brew",
+    "workbench.colorTheme": "Atom One Dark",
+}
