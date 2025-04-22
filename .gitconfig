@@ -1,7 +1,7 @@
 [user]
 	name = Michael Bui
 	email = michael.bui_crystal@outlook.com
-	signingkey = 228391DE1DC976D1
+	signingkey = 102F1694BCD1FC64 
 [gpg]
 	program = gpg
 [core]
@@ -13,3 +13,5 @@
 	clean = git-lfs clean -- %f
 [http]
 	postBuffer = 524288000
+[commit]
+	gpgsign = true
