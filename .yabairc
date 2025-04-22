@@ -1,0 +1,81 @@
+#!/usr/bin/env sh
+
+# ====== SCRIPTING ADDITION SETUP ======
+# This loads the scripting addition when Dock restarts
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# Initial loading of the scripting addition
+sudo yabai --load-sa
+
+# ====== GLOBAL SETTINGS ======
+# Uncomment these if you have installed the scripting addition
+# yabai -m config window_shadow on
+# yabai -m config window_border on
+# yabai -m config window_border_width 4
+# yabai -m config active_window_border_color 0xff775759
+# yabai -m config normal_window_border_color 0xff555555
+
+# New window spawns to the right or bottom
+yabai -m config window_placement second_child
+
+# ====== WINDOW MANAGEMENT ======
+# Ensure proper window stacking and focus behavior
+yabai -m config window_topmost off               # Prevent windows from staying on top
+yabai -m config window_opacity off               # Disable window opacity
+yabai -m config window_shadow on                 # Enable shadows for window depth perception
+yabai -m config auto_balance off                 # Don't automatically rebalance windows
+
+# ====== PADDING AND GAPS ======
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+yabai -m config window_gap 10
+
+# ====== MOUSE SETTINGS ======
+# Mouse settings will be controlled by the layout_change function
+# ====== WINDOW RULES ======
+# Exclude problematic apps from being managed
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add app="^System Information$" manage=off
+yabai -m rule --add app="^System Information$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
+
+# Specific rules for troublesome apps
+yabai -m rule --add app="^Discord$" manage=on layer=normal
+yabai -m rule --add app="^Slack$" manage=on layer=normal
+yabai -m rule --add app="^Messages$" manage=on layer=normal
+yabai -m rule --add app="^Safari$" manage=on layer=normal
+yabai -m rule --add app="^Chrome$" manage=on layer=normal
+yabai -m rule --add app="^Firefox$" manage=on layer=normal
+# Function to set appropriate settings based on layout mode
+layout_change() {
+    local layout_type=$(yabai -m query --spaces --space | jq -r '.type')
+    
+    if [ "$layout_type" = "bsp" ]; then
+        # Enable mouse settings in BSP mode
+        yabai -m config mouse_follows_focus on
+        yabai -m config focus_follows_mouse autoraise
+        # Enable mouse settings in BSP mode
+        yabai -m config mouse_follows_focus on
+        yabai        # Disable mouse settings in float mode
+        yabai -m config mouse_follows_focus off
+        yabai -m config focus_follows_mouse off
+        yabai -m config window_topmost on         # Turn on window_topmost in float mode
+    fi
+}
+
+# Initialize settings based on current layout
+layout_change
+
+# Add signal to handle layout changes
+yabai -m signal --add event=space_changed action="layout_change"
+yabai -m signal --add event=space_layout_changed action="layout_change"
+
+
+# Add window focus signals to ensure proper stacking when focus changes
+yabai -m signal --add event=window_focused action="yabai -m window --sub-layer normal"
+yabai -m signal --add event=application_activated action="yabai -m window --sub-layer normal"
+
+# Create a signal that can be checked in skhd config (maintain compatibility)
+yabai -m signal --add label=layout_changed event=layout_changed action=""
+

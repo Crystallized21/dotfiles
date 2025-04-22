@@ -1,0 +1,31 @@
+# basic hotkeys - only work in BSP mode
+alt - h : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --focus west
+alt - l : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --focus east
+alt - j : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --focus south
+alt - k : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --focus north
+
+# window warping - only works in BSP mode
+alt + shift - h : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --warp west
+alt + shift - j : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --warp south
+alt + shift - k : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --warp north
+alt + shift - l : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --warp east
+
+# toggle between BSP and float layout mode
+alt + shift - t : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+# space mangement
+alt - 9 : yabai -m space --create
+alt - 0 : yabai -m space --destroy
+
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+
+alt + shift - 1 : yabai -m window --space 1; yabai -m space --focus 1
+alt + shift - 2 : yabai -m window --space 2; yabai -m space --focus 2
+alt + shift - 3 : yabai -m window --space 3; yabai -m space --focus 3
+alt + shift - 4 : yabai -m window --space 4; yabai -m space --focus 4
+
+# optional notification when trying to use focus/warp in float mode
+# alt - h : yabai -m query --spaces --space | jq -r '.type' | grep -q 'bsp' && yabai -m window --focus west || osascript -e 'display notification "Focus commands disabled in float mode" with title "Yabai"'
