@@ -103,12 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-# Python and pip aliases
-alias python='python3.12'
-alias pip='pip3.12'
-alias python3='python3.13'
-alias pip3='pip3.13'
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 eval $(thefuck --alias)
