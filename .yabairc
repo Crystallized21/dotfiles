@@ -27,6 +27,8 @@ yabai -m config auto_balance off                 # Don't automatically rebalance
 # ====== PADDING AND GAPS ======
 yabai -m config left_padding 10
 yabai -m config right_padding 10
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
 yabai -m config window_gap 10
 
 # ====== MOUSE SETTINGS ======
@@ -78,4 +80,5 @@ yabai -m signal --add event=application_activated action="yabai -m window --sub-
 
 # Create a signal that can be checked in skhd config (maintain compatibility)
 yabai -m signal --add label=layout_changed event=layout_changed action=""
+
 
