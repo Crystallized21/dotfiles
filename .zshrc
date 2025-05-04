@@ -110,3 +110,6 @@ export CARGO_MOMMYS_LITTLE="boy"
 export CARGO_MOMMYS_MOODS="chill/thirsty/yikes"
 
 zstyle ':omz:plugins:nvm' lazy yes
+
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
