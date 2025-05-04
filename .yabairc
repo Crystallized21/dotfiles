@@ -14,7 +14,6 @@ sudo yabai --load-sa
 yabai -m config window_placement second_child
 
 # ====== WINDOW MANAGEMENT ======
-yabai -m config window_topmost off               # Prevent windows from staying on top
 yabai -m config window_opacity off               # Disable window opacity
 yabai -m config window_shadow on                 # Enable shadows for window depth perception
 yabai -m config auto_balance off                 # Don't automatically rebalance windows
@@ -28,7 +27,6 @@ yabai -m config window_gap 10
 
 # ====== MOUSE SETTINGS ======
 yabai -m config focus_follows_mouse autofocus 
-yabai -m config mouse_follows_focus on
 
 # ====== WINDOW RULES ======
 yabai -m rule --add app="^System Settings$" manage=off
@@ -46,32 +44,13 @@ yabai -m rule --add app="^Safari$" manage=on layer=normal
 yabai -m rule --add app="^Chrome$" manage=on layer=normal
 yabai -m rule --add app="^Firefox$" manage=on layer=normal
 
-# Function to set appropriate settings based on layout mode
-layout_change() {
-    local layout_type=$(yabai -m query --spaces --space | jq -r '.type')
-    
-    if [ "$layout_type" = "bsp" ]; then
-        # Enable mouse settings in BSP mode
-        yabai -m config mouse_follows_focus on
-        yabai -m config focus_follows_mouse autoraise
-        # Enable mouse settings in BSP mode
-        yabai -m config mouse_follows_focus on
-        yabai        # Disable mouse settings in float mode
-        yabai -m config mouse_follows_focus off
-        yabai -m config focus_follows_mouse off
-        yabai -m config window_topmost on         
-    fi
-}
-
-layout_change
-
-yabai -m signal --add event=space_changed action="layout_change"
-yabai -m signal --add event=space_layout_changed action="layout_change"
+# run the layout change script on space/layout changes
+yabai -m signal --add event=space_changed action="~/layout_change.sh"
+yabai -m signal --add event=space_layout_changed action="~/layout_change.sh"
 
 yabai -m signal --add event=window_focused action="yabai -m window --sub-layer normal"
 yabai -m signal --add event=application_activated action="yabai -m window --sub-layer normal"
 
 # Create a signal that can be checked in skhd config (maintain compatibility)
 yabai -m signal --add label=layout_changed event=layout_changed action=""
-
 
