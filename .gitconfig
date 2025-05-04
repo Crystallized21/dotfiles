@@ -1,7 +1,7 @@
 [user]
 	name = Michael Bui
-	email = michael.bui_crystal@outlook.com
-	signingkey = 102F1694BCD1FC64 
+	email = cryst@crystallized.sh
+	signingkey = 02F3E1AF98D579FA
 [gpg]
 	program = gpg
 [core]
