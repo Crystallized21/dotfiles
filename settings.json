@@ -53,4 +53,6 @@
     "parallels-desktop.git.path": "/opt/homebrew/bin/git",
     "parallels-desktop.brew.path": "/opt/homebrew/bin/brew",
     "workbench.colorTheme": "Atom One Dark",
+    "editor.accessibilitySupport": "off",
+    "parallels-desktop.devops-service.path": "/Users/crystallized/.parallels-desktop-vscode/tools/prldevops",
 }
