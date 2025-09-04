@@ -15,3 +15,5 @@
 	postBuffer = 524288000
 [commit]
 	gpgsign = true
+[pull]
+	rebase = true
