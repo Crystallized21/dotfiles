@@ -55,4 +55,4 @@
     "workbench.colorTheme": "Atom One Dark",
     "editor.accessibilitySupport": "off",
     "parallels-desktop.devops-service.path": "/Users/crystallized/.parallels-desktop-vscode/tools/prldevops",
-}
+}    "github.copilot.nextEditSuggestions.enabled": true,
